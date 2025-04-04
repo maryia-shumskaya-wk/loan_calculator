@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./front
+    ports:
+      - "3000:80"
+  backend:
+    build: 
+      context: ./back
+      dockerfile: ./build/Dockerfile
+      target: prod
+    ports:
+      - "8000:8000"
+    volumes:
+      - './back:/app'
